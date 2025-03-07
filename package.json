@@ -4,8 +4,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "build": "npm i",
     "start": "node .",
-    "build":"npm i"
+    "start:dev": "nodemon ."
   },
   "keywords": [],
   "author": "",
