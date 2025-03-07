@@ -20,8 +20,7 @@ export const bootstrap = () => {
   app.use(
     cors({
       origin: process.env.ALLOWED_ORIGIN || "*",
-      methods: "GET,POST,PUT,DELETE,PATCH",
-      allowedHeaders: "Content-Type,Authorization",
+      methods: "GET,POST,PUT,DELETE,PATCH"
     })
   );
 
