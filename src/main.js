@@ -19,7 +19,7 @@ export const bootstrap = () => {
   app.use(helmet());
   app.use(
     cors({
-      origin: process.env.ALLOWED_ORIGIN || "*",
+      origin: "*",
       methods: "GET,POST,PUT,DELETE,PATCH"
     })
   );
