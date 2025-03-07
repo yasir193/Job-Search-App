@@ -39,8 +39,11 @@ export const bootstrap = () => {
 
   database_connection();
 
-  const PORT = process.env.PORT || 4000;
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+  app.get("/", async (req, res) => {
+    res.json({ message: "Server is running!", data: await Status.findOne() });
+  });
+
+  app.listen(process.env.PORT || 3000, () => {
+    console.log(`Server is running on port ${process.env.PORT}`);
   });
 };
