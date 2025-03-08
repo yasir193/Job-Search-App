@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "npm i",
+    "build": "npm install",
     "start": "node .",
     "start:dev": "nodemon ."
   },

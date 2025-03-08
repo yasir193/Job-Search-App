@@ -1,3 +1,3 @@
-import { bootstrap} from './src/main.js';
+import {bootstrap} from './src/api/main.js';
 
 bootstrap()
