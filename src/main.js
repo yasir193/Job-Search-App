@@ -1,17 +1,18 @@
+import { config } from "dotenv";
+config();
 import express from "express";
 import rateLimit from "express-rate-limit";
 import helmet from "helmet";
 import cors from "cors";
-import { database_connection } from "../DB/connection.js";
-import authController from "../Modules/Auth/auth.controller.js";
-import userController from "../Modules/user/user.controller.js";
-import companyController from "../Modules/company/company.controller.js";
-import jobController from "../Modules/job/job.controller.js";
-import { config } from "dotenv";
+import { database_connection } from "./DB/connection.js";
+import authController from "./Modules/Auth/auth.controller.js";
+import userController from "./Modules/user/user.controller.js";
+import companyController from "./Modules/company/company.controller.js";
+import jobController from "./Modules/job/job.controller.js";
 import { createHandler } from "graphql-http/lib/use/express";
-import { mainSchema } from "../GraphQl/main.schema.js";
+import { mainSchema } from "./GraphQl/main.schema.js";
 
-config();
+
 
 export const bootstrap = () => {
   const app = express();
