@@ -4,6 +4,7 @@ import express from "express";
 import rateLimit from "express-rate-limit";
 import helmet from "helmet";
 import cors from "cors";
+import { Server } from 'socket.io'
 import { database_connection } from "./DB/connection.js";
 import authController from "./Modules/Auth/auth.controller.js";
 import userController from "./Modules/user/user.controller.js";
@@ -16,6 +17,7 @@ import { mainSchema } from "./GraphQl/main.schema.js";
 
 export const bootstrap = () => {
   const app = express();
+  const socketConnections = new Map()
   app.use(express.json());
   app.use(helmet());
   app.use(cors({
