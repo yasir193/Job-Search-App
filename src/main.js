@@ -1,8 +1,8 @@
 import { config } from "dotenv";
 config();
 import express from "express";
-// import rateLimit from "express-rate-limit";
-// import helmet from "helmet";
+import rateLimit from "express-rate-limit";
+import helmet from "helmet";
 import cors from "cors";
 import { database_connection } from "./DB/connection.js";
 import authController from "./Modules/Auth/auth.controller.js";
@@ -17,19 +17,19 @@ import { mainSchema } from "./GraphQl/main.schema.js";
 export const bootstrap = () => {
   const app = express();
   app.use(express.json());
-  // app.use(helmet());
+  app.use(helmet());
   app.use(cors({
     origin: "*", // Allow all origins
     methods: ['GET', 'POST', 'PUT', 'DELETE','PATCH'], // Specify allowed HTTP methods
     credentials: true // If you need cookies/authentication
   }));
 
-  // const limiter = rateLimit({
-  //   windowMs: 15 * 60 * 1000,
-  //   max: 100,
-  //   message: { message: "Too many requests, please try again later." },
-  // });
-  // app.use(limiter);
+  const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+    message: { message: "Too many requests, please try again later." },
+  });
+  app.use(limiter);
 
   app.use("/graphQl", createHandler({ schema: mainSchema }));
   app.use("/auth", authController);
